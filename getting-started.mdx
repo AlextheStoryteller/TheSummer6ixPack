@@ -1,5 +1,5 @@
 ---
-title: "Get Started with the Summer 6ix Pack Player"
+title: "Summer 6ix Pack Player: Quick Start in Your Browser"
 sidebarTitle: "Quickstart"
 description: "Launch the Summer 6ix Pack Player in seconds — open one HTML file in your browser and you're ready to start listening to all six tracks."
 ---
@@ -11,10 +11,10 @@ Getting the Summer 6ix Pack Player up and running takes less than a minute. Ther
     Open `index.html` in any modern browser (Chrome, Firefox, Safari, or Edge). The player loads immediately — no installation or account required.
   </Step>
   <Step title="Select a track">
-    Click any track in the playlist at the bottom of the player. The track title updates at the top of the player, and the player is ready to play.
+    Click any track in the playlist at the bottom of the player. The track title updates at the top of the player, and the player is ready to play. Under the hood, clicking a track calls `loadTrack(index)` — where `index` is that track's zero-based position in the playlist — and reads the audio file path from the track element's `data-src` attribute.
   </Step>
   <Step title="Hit Play">
-    Click the **PLAY** button to start listening. The progress bar fills as the song plays, showing both elapsed time and total duration so you always know where you are in the track.
+    Click the **PLAY** button to start listening. The progress bar fills as the song plays, showing both elapsed time and total duration so you always know where you are in the track. The button invokes `playAudio()` to start playback and `pauseAudio()` to pause it — you can call these same functions directly from the browser console to control playback programmatically.
   </Step>
   <Step title="Navigate freely">
     Use the ⏮ and ⏭ buttons to skip backward or forward through the tracklist. Click anywhere on the progress bar to jump to that point in the song. When a track ends, the next one plays automatically.

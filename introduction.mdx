@@ -1,5 +1,5 @@
 ---
-title: "Summer 6ix Pack Player: Stream Your Album"
+title: "Summer 6ix Pack Player: Features and Album Overview"
 sidebarTitle: "Introduction"
 description: "A browser-based music player built for the Summer 6ix Pack album — six tracks, full playback controls, and a sleek glassmorphism UI."
 ---
@@ -9,16 +9,16 @@ The **Summer 6ix Pack Player** is a custom, browser-based music player designed 
 ## Key Features
 
 <CardGroup cols={2}>
-  <Card title="Glassmorphism UI" icon="palette">
+  <Card title="Glassmorphism UI" icon="palette" href="/customization/theming">
     A frosted-glass visual design that keeps the player looking clean and modern on any background.
   </Card>
-  <Card title="Playback Controls" icon="circle-play">
+  <Card title="Playback Controls" icon="circle-play" href="/player/controls">
     Play, pause, skip to the previous track, or advance to the next — all from a single intuitive control bar.
   </Card>
-  <Card title="Progress Scrubber" icon="sliders">
+  <Card title="Progress Scrubber" icon="sliders" href="/player/progress-bar">
     An interactive progress bar shows elapsed and total time. Click anywhere on the bar to jump to that moment in the track.
   </Card>
-  <Card title="Smart Tracklist" icon="list">
+  <Card title="Smart Tracklist" icon="list" href="/player/tracklist">
     A scrollable playlist highlights the currently playing track and lets you jump to any song with a single click.
   </Card>
 </CardGroup>
@@ -37,3 +37,5 @@ The **Summer 6ix Pack Player** is a custom, browser-based music player designed 
 ## What's in These Docs
 
 These docs walk you through everything you need to get the most out of the Summer 6ix Pack Player. **Using the Player** covers the day-to-day controls and playback features. **Customization** explains how to adapt the player's appearance and tracklist to your own needs. **Deployment** guides you through hosting the player so your audience can access it anywhere.
+
+The player also exposes a small public JavaScript API for builders who want to extend or automate playback. The core functions are `loadTrack(index)` to programmatically load any track by its position in the playlist, `playAudio()` to start playback, and `pauseAudio()` to pause it. Track items in the HTML carry a `data-src` attribute on each `.track-item` element that holds the audio file path for that track. For progress tracking, the player's `<audio>` element fires the standard `timeupdate` event as playback progresses and the `loadedmetadata` event once a track's duration is known — both are used internally to drive the progress bar and are available for your own listeners.

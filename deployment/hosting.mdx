@@ -1,0 +1,70 @@
+---
+title: "Host the Summer 6ix Pack Player Online"
+sidebarTitle: "Hosting"
+description: "Deploy the Summer 6ix Pack Player to the web — no backend, no build step, just a folder of static files on any host you choose."
+---
+
+The Summer 6ix Pack Player is a fully static site — there is no server, no database, and no build process. Everything the player needs lives in a single folder: one `index.html` file, your MP3 tracks, and optional cover art. Any host that can serve static files will work.
+
+## File structure
+
+Upload or deploy this exact folder structure. Keep the relative paths intact so the player can find its audio files.
+
+```
+index.html
+tracks/
+  leftonread1.mp3
+  theperfectionist2.mp3
+  sixtytwoselfies3.mp3
+  thetouristi4.mp3
+  thetouristreprise5.mp3
+  thegrownup6.mp3
+artwork/
+  cover.jpg
+```
+
+## Hosting options
+
+<CardGroup cols={2}>
+  <Card title="GitHub Pages" icon="github" href="#">
+    Push your folder to a GitHub repository and enable Pages under **Settings → Pages**. GitHub serves the contents of your repo root (or a `/docs` folder) as a public static site — free forever.
+  </Card>
+  <Card title="Netlify" icon="cloud" href="#">
+    Drag and drop your project folder onto [netlify.com](https://netlify.com) to get an instant public URL. You can also connect a GitHub repo for automatic redeploys on every push.
+  </Card>
+  <Card title="Cloudflare Pages" icon="cloud-bolt" href="#">
+    Connect your GitHub repo or upload your folder directly in the Cloudflare dashboard. Cloudflare Pages serves your site from its global CDN with zero configuration required.
+  </Card>
+  <Card title="Any Web Server" icon="server" href="#">
+    If you already run Apache, Nginx, or Caddy, just copy the folder to your server's web root (e.g. `/var/www/html/player/`) and point your virtual host at it. No special configuration needed.
+  </Card>
+</CardGroup>
+
+<Tip>
+  GitHub Pages, Netlify, and Cloudflare Pages are all free for static sites. Any of them work perfectly for the Summer 6ix Pack Player.
+</Tip>
+
+## Local development
+
+For development and testing, run a local web server instead of opening `index.html` directly in your browser. A local server ensures audio files load over `http://`, which all browsers handle reliably.
+
+<CodeGroup>
+```bash Python 3
+python3 -m http.server 8080
+```
+
+```bash Node.js (npx)
+npx serve .
+```
+
+```bash VS Code Live Server
+# Right-click index.html in the Explorer panel
+# → Open with Live Server
+```
+</CodeGroup>
+
+Once your server is running, open [http://localhost:8080](http://localhost:8080) (or whatever port your tool reports) in your browser.
+
+<Note>
+  Never open `index.html` directly from your filesystem (`file://` URLs) in production — always serve it through a web server so audio files load correctly.
+</Note>

@@ -1,0 +1,82 @@
+---
+title: "Embed the Player on Any Webpage"
+sidebarTitle: "Embedding"
+description: "Drop the Summer 6ix Pack Player into any existing webpage with a single iframe tag — no dependencies, no JavaScript required on the host page."
+---
+
+Because the Summer 6ix Pack Player is a self-contained static page, you can embed it anywhere using a standard HTML `<iframe>`. Your blog, portfolio, landing page, or any other site can host the player without touching its own codebase.
+
+## Basic embed code
+
+Copy the snippet below and replace `https://your-domain.com/player/` with the URL where you deployed the player.
+
+```html
+<iframe
+  src="https://your-domain.com/player/"
+  width="420"
+  height="620"
+  style="border: none; border-radius: 24px;"
+  title="Summer 6ix Pack Player"
+></iframe>
+```
+
+## Sizing
+
+The player's UI is designed for a compact, card-style footprint. Use these dimensions as your starting point:
+
+| Dimension | Recommended range |
+|-----------|-------------------|
+| Width     | 380 – 420 px      |
+| Height    | 580 – 640 px      |
+
+You can adjust the `width` and `height` attributes to suit your layout. For example, to use a slightly smaller embed:
+
+```html
+<iframe
+  src="https://your-domain.com/player/"
+  width="380"
+  height="580"
+  style="border: none; border-radius: 24px;"
+  title="Summer 6ix Pack Player"
+></iframe>
+```
+
+Avoid going narrower than **380 px** — below that, the player's controls may overlap or wrap unexpectedly.
+
+## Styling the iframe
+
+Two CSS properties make the player look like a natural part of your page rather than a boxed-in widget:
+
+- **`border: none`** — removes the browser's default iframe border so the player's own edges show cleanly.
+- **`border-radius: 24px`** — rounds the corners of the iframe to match the player's internal card shape, giving it a smooth, pill-like silhouette.
+
+```html
+style="border: none; border-radius: 24px;"
+```
+
+You can increase or decrease the `border-radius` value to taste. A value of `0` gives you sharp corners; `12px` is a subtle rounding; `24px` matches the player's native look.
+
+<Note>
+  The player uses a glassmorphism-style background (a frosted-glass blur effect). Depending on your host page's background color, the player's backdrop may appear darker or lighter than it does in a standalone tab. A dark or richly colored parent background tends to produce the most striking result.
+</Note>
+
+## CORS and audio
+
+When the player runs inside an iframe, the browser still loads audio files from wherever the player is hosted. For playback to work correctly, one of the following must be true:
+
+- The **player and all audio files share the same domain** (the simplest and most reliable setup).
+- The server that hosts the audio files sends a permissive CORS header so the browser allows cross-origin requests:
+
+```
+Access-Control-Allow-Origin: *
+```
+
+Most static hosting platforms (GitHub Pages, Netlify, Cloudflare Pages) serve all files from the same origin automatically, so you typically don't need to configure anything extra.
+
+<Tip>
+  For the most seamless embed experience, host both the player and your audio files on the same domain.
+</Tip>
+
+<Warning>
+  Autoplay policies in modern browsers block audio from starting without user interaction. The player handles this gracefully — music only starts when the user clicks Play or a track.
+</Warning>

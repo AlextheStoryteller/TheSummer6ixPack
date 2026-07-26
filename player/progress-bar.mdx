@@ -1,0 +1,45 @@
+---
+title: "Progress Bar: Track Time and Seek Controls"
+sidebarTitle: "Progress Bar"
+description: "Use the progress bar to monitor playback position, read current and total track time, and click anywhere to seek within a song."
+---
+
+The progress bar sits between the album art and the tracklist, giving you a real-time view of where you are in the current track. It updates continuously as the song plays and lets you jump to any moment in the track with a single click.
+
+## Reading the progress bar
+
+The progress bar row contains three elements laid out horizontally:
+
+- **Current time** (left) — how far into the track you are right now.
+- **Progress bar** (center) — a frosted white pill that fills from left to right as the track plays. The fill uses a gradient that transitions from **gold** on the left to **coral** on the right.
+- **Total duration** (right) — the full length of the loaded track.
+
+The bar updates roughly four times per second, keeping the fill and timestamps in sync with playback.
+
+## Seeking
+
+You can skip to any point in a track by clicking directly on the progress bar.
+
+<Steps>
+  <Step title="Load a track">
+    Click any track in the tracklist, or use the skip buttons to navigate to the track you want.
+  </Step>
+  <Step title="Click the bar">
+    Click anywhere along the progress bar. The player calculates your click position as a fraction of the bar's total width and jumps the playback position to the corresponding moment in the song.
+  </Step>
+  <Step title="Playback resumes">
+    The fill updates immediately to reflect the new position, and the current-time display updates to match. If the track was playing, it continues from the new position.
+  </Step>
+</Steps>
+
+<Warning>
+  Seeking only works when a track is loaded and either playing or paused. Clicking the bar before you've selected any track has no effect.
+</Warning>
+
+## Time format
+
+All times are displayed in **M:SS** format — for example, `3:42` for three minutes and forty-two seconds. There is no leading zero on the minutes.
+
+<Note>
+  Both the current time and total duration show `0:00` until a track is loaded and its audio metadata has been read. Once you select a track, the total duration populates automatically and the current time begins counting up during playback.
+</Note>

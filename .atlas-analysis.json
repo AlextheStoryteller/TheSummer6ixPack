@@ -1,0 +1,67 @@
+{
+  "projectType": "frontend",
+  "projectName": "Summer 6ix Pack Player",
+  "projectDescription": "A custom browser-based music player for the Summer 6ix Pack album, featuring a frosted-glass UI, full playback controls, progress scrubbing, and a 6-track playlist.",
+  "theme": "almond",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guide",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "introduction",
+              "getting-started"
+            ]
+          },
+          {
+            "group": "Using the Player",
+            "pages": [
+              "player/controls",
+              "player/tracklist",
+              "player/progress-bar"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "customization/adding-tracks",
+              "customization/cover-art",
+              "customization/theming"
+            ]
+          },
+          {
+            "group": "Embedding & Deployment",
+            "pages": [
+              "deployment/hosting",
+              "deployment/embedding"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Frosted-glass glassmorphism UI design",
+    "Play, pause, skip next, and skip previous controls",
+    "Interactive progress bar with click-to-seek",
+    "Current time and total duration display",
+    "Scrollable 6-track playlist with active track highlighting",
+    "Auto-advance to next track on completion",
+    "Cover art display with customizable artwork",
+    "Responsive single-page layout"
+  ],
+  "publicApiSurface": [
+    "data-src attribute on .track-item elements (MP3 file path)",
+    "loadTrack(index) — loads a track by playlist index",
+    "playAudio() — starts playback",
+    "pauseAudio() — pauses playback",
+    "progress bar click-to-seek interaction",
+    "audio timeupdate event for progress sync",
+    "audio loadedmetadata event for duration display"
+  ]
+}

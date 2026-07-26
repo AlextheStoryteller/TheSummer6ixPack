@@ -1,0 +1,79 @@
+---
+title: "Add Custom Cover Art to the Player"
+sidebarTitle: "Cover Art"
+description: "Replace the default text placeholder in the Summer 6ix Pack player with your own artwork by swapping a single HTML element."
+---
+
+The player includes a cover art area at the top of the card. By default, it displays a plain text placeholder — a `<span>` with the player's name. Replacing it with a real image takes just a few lines of HTML.
+
+The `.cover-art-wrapper` div already has all the CSS you need built in: it fills the full width of the card, stands 220px tall, clips to rounded corners, and uses `object-fit: cover` to ensure your image always fills the space cleanly.
+
+## Replacing the placeholder with an image
+
+<Steps>
+  <Step title="Prepare your image">
+    A JPEG or PNG file works best. Aim for a **square aspect ratio** and a minimum size of **400×400px** for sharp rendering on high-density screens. WebP is also supported and gives you smaller file sizes.
+  </Step>
+  <Step title="Save your image next to index.html">
+    Create an `artwork/` folder next to `index.html` and place your image inside it:
+
+    ```
+    index.html
+    artwork/
+      cover.jpg
+    tracks/
+      leftonread1.mp3
+    ```
+
+    You can use any folder name or path you prefer — just update the `src` attribute in the next step to match.
+  </Step>
+  <Step title="Open index.html in a text editor">
+    Open `index.html` in your preferred text editor (VS Code, Sublime Text, Notepad++, etc.).
+  </Step>
+  <Step title="Find the cover art wrapper">
+    Search for `cover-art-wrapper` to locate this section:
+
+    ```html
+    <div class="cover-art-wrapper">
+        <span>Summer 6ix Pack</span>
+    </div>
+    ```
+  </Step>
+  <Step title="Replace the span with an img tag">
+    Swap out the inner `<span>` for an `<img>` element pointing to your artwork file.
+
+    **Before:**
+    ```html
+    <div class="cover-art-wrapper">
+        <span>Summer 6ix Pack</span>
+    </div>
+    ```
+
+    **After:**
+    ```html
+    <div class="cover-art-wrapper">
+        <img src="artwork/cover.jpg" alt="Summer 6ix Pack cover art">
+    </div>
+    ```
+
+    Update the `src` value to match wherever you saved your image, and set a descriptive `alt` text for accessibility.
+  </Step>
+  <Step title="Save and refresh">
+    Save `index.html` and reload the page in your browser. Your cover art will appear in the player card.
+  </Step>
+</Steps>
+
+<Note>
+  The `object-fit: cover` CSS property ensures your image always fills the cover area neatly, even if it's not perfectly square. The image will be centered and cropped to fit — no stretching or letterboxing.
+</Note>
+
+## Supported formats
+
+| Format | Notes |
+|--------|-------|
+| **JPEG** | Best for photographs and complex artwork. Recommended. |
+| **PNG** | Best for illustrations or images with transparency. |
+| **WebP** | Smaller file sizes than JPEG/PNG. Supported in all modern browsers. |
+| **GIF** | Animated GIFs work — the animation plays inside the cover art area. |
+
+**Recommended dimensions:** 400×400px or larger, square. The display area is fixed at the full card width × 220px, but using a larger source image ensures it looks crisp on retina/high-DPI screens.

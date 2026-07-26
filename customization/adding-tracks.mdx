@@ -1,0 +1,80 @@
+---
+title: "Add and Remove Tracks from the Playlist"
+sidebarTitle: "Adding Tracks"
+description: "Learn how to manage the Summer 6ix Pack playlist by adding or removing tracks directly in the HTML — no JavaScript changes required."
+---
+
+The playlist is defined entirely in HTML, making it straightforward to add, remove, or reorder tracks. The player's JavaScript automatically discovers every element with the `track-item` class when the page loads, so all you need to do is edit the markup.
+
+## Adding a track
+
+<Steps>
+  <Step title="Copy your MP3 file into the tracks/ folder">
+    Place your MP3 file inside the `tracks/` folder that lives alongside `index.html`. For example: `tracks/mysong.mp3`.
+  </Step>
+  <Step title="Open index.html in a text editor">
+    Open `index.html` in your preferred text editor (VS Code, Sublime Text, Notepad++, etc.).
+  </Step>
+  <Step title="Find the playlist section">
+    Search for `<ul id="playlist">` — this is the container that holds all track entries.
+  </Step>
+  <Step title="Add a new list item">
+    Inside `<ul id="playlist">`, add a new `<li>` entry for your track:
+
+    ```html
+    <li class="track-item" data-src="tracks/mysong.mp3">
+        <span>07. My Song Title</span>
+        <span class="track-duration">--:--</span>
+    </li>
+    ```
+
+    A complete track entry looks like this:
+
+    ```html
+    <ul id="playlist">
+        <li class="track-item" data-src="tracks/leftonread1.mp3">
+            <span>01. Left On Read</span>
+            <span class="track-duration">--:--</span>
+        </li>
+        <!-- ... existing tracks ... -->
+        <li class="track-item" data-src="tracks/mysong.mp3">
+            <span>07. My Song Title</span>
+            <span class="track-duration">--:--</span>
+        </li>
+    </ul>
+    ```
+  </Step>
+  <Step title="Save and refresh">
+    Save `index.html` and refresh the page in your browser. Your new track will appear in the playlist immediately.
+  </Step>
+</Steps>
+
+<Tip>
+  Keep your MP3 files in the `tracks/` folder alongside `index.html` to keep relative paths simple.
+</Tip>
+
+## Removing a track
+
+To remove a track, simply delete its corresponding `<li>` element from the `<ul id="playlist">` section. For example, to remove "Left On Read", delete this entire block:
+
+```html
+<li class="track-item" data-src="tracks/leftonread1.mp3">
+    <span>01. Left On Read</span>
+    <span class="track-duration">--:--</span>
+</li>
+```
+
+Save the file and refresh — the track will no longer appear in the playlist.
+
+## Track naming
+
+The first `<span>` inside each `<li>` sets the display name for that track. This name appears in two places:
+
+- **The tracklist** — shown next to the track duration in the playlist panel.
+- **The now-playing title area** — shown at the top of the player when that track is active.
+
+You can use any text you like as a display name. A common convention is to prefix the name with a zero-padded track number (e.g. `01.`, `02.`) to preserve ordering at a glance, but this is entirely optional.
+
+<Note>
+  The player supports any number of tracks — the tracklist scrolls automatically when it overflows.
+</Note>

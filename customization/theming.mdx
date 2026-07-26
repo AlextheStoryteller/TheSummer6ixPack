@@ -1,0 +1,79 @@
+---
+title: "Customize Colors and Appearance"
+sidebarTitle: "Theming"
+description: "Retheme the Summer 6ix Pack player in minutes by editing eight CSS variables — no deep knowledge of the stylesheet required."
+---
+
+All of the player's colors are controlled through CSS custom properties (variables) declared in a single `:root` block. Changing one variable updates every element that uses it throughout the player — so you can completely retheme the look and feel by editing just a few values.
+
+## The CSS variables
+
+The `:root` block lives at the top of the `<style>` tag in `index.html`, just after `<head>`. Here's the full block:
+
+```css
+:root {
+    --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%);
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 16px 32px 0 rgba(31, 38, 135, 0.15);
+    --accent-coral: #ff5e62;
+    --accent-gold: #ff9966;
+    --text-dark: #2d3748;
+    --text-muted: #64748b;
+}
+```
+
+### Variable reference
+
+| Variable | What it controls | Default value |
+|---|---|---|
+| `--bg-gradient` | Full-page background gradient | `linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%)` |
+| `--glass-bg` | Frosted glass card fill color and opacity | `rgba(255, 255, 255, 0.45)` |
+| `--glass-border` | Glass card border color | `rgba(255, 255, 255, 0.6)` |
+| `--glass-shadow` | Card drop shadow | `0 16px 32px 0 rgba(31, 38, 135, 0.15)` |
+| `--accent-coral` | Play button color, active track text, progress bar end color | `#ff5e62` |
+| `--accent-gold` | Progress bar start color, play button gradient start | `#ff9966` |
+| `--text-dark` | Primary text color (track titles, labels) | `#2d3748` |
+| `--text-muted` | Secondary text color (timestamps, durations) | `#64748b` |
+
+## Example: Changing the background gradient
+
+To replace the default pink-to-blue summer gradient with a deep navy night theme, update `--bg-gradient`:
+
+```css
+:root {
+    --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 16px 32px 0 rgba(31, 38, 135, 0.15);
+    --accent-coral: #ff5e62;
+    --accent-gold: #ff9966;
+    --text-dark: #2d3748;
+    --text-muted: #64748b;
+}
+```
+
+The background will shift to a dark midnight blue. You may also want to lighten `--text-dark` and `--text-muted` if the card's glass opacity makes text hard to read against the darker backdrop.
+
+<Tip>
+  Use a CSS gradient generator (like [cssgradient.io](https://cssgradient.io)) to design your background gradient, then paste the result as the value of `--bg-gradient`.
+</Tip>
+
+## Example: Changing accent colors
+
+The `--accent-coral` and `--accent-gold` variables together drive the play button gradient and the progress bar fill. To switch to a purple theme:
+
+```css
+:root {
+    --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #a1c4fd 100%);
+    --glass-bg: rgba(255, 255, 255, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: 0 16px 32px 0 rgba(31, 38, 135, 0.15);
+    --accent-coral: #7c3aed;
+    --accent-gold: #a855f7;
+    --text-dark: #2d3748;
+    --text-muted: #64748b;
+}
+```
+
+This replaces the coral-to-gold gradient on the play button and progress bar with a violet-to-purple sweep, while leaving the background and glass card unchanged.
